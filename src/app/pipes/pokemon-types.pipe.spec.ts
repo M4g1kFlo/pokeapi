@@ -1,4 +1,4 @@
-import { Type } from '../interfaces/PokemonResponse';
+import { Type, TypeData } from '../interfaces/PokemonResponse';
 import { PokemonTypesPipe } from './pokemon-types.pipe';
 
 describe('PokemonTypesPipe', () => {
@@ -8,21 +8,21 @@ describe('PokemonTypesPipe', () => {
   });
 
   it('should merge both types', () => {
-    const feu: Type = {
+    const feu: TypeData = {
       slot: 1,
       type: {
         name: "feu",
         url: "nope",
       },
     }
-    const eau: Type = {
+    const eau: TypeData = {
       slot: 2,
       type: {
         name: "eau",
         url: "nope",
       },
     }
-    const arr: Type[] = [feu,eau];
+    const arr: TypeData[] = [feu,eau];
     const separator = "-"
     expect(pipe.transform(arr,separator)).toBe(arr[0].type.name+" "+ separator +" "+arr[1].type.name)
   });

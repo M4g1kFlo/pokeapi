@@ -320,7 +320,7 @@ export interface Type {
     url: string;
 }
 
-export interface Type {
+export interface TypeData {
     slot: number;
     type: Type;
 }
