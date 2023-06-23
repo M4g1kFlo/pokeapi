@@ -991,9 +991,15 @@ describe('PokedexService', () => {
     expect(request.length).toBe(1)
   });
 
-  it('should give Ditto result', () => {
+  it('should give result by name', () => {
     jest.spyOn(httpClient,"get").mockReturnvalue(of(ditto))
     service.getPokemonInfos("ditto")
+    service.currentPokemon.subscribe(pok => expect(pok).toEqual(ditto))
+  });
+
+  it('should give result by id', () => {
+    jest.spyOn(httpClient,"get").mockReturnvalue(of(ditto))
+    service.getPokemonInfos("132")
     service.currentPokemon.subscribe(pok => expect(pok).toEqual(ditto))
   });
 
